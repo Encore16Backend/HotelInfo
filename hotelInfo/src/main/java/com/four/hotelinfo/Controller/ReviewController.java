@@ -40,11 +40,11 @@ public class ReviewController {
     }
 
     // 리뷰 1개 보기 - userId
-    @GetMapping("/myAllReview/{userid}")
+    /*@GetMapping("/myAllReview/{userid}")
     public ResponseEntity<List<Review>> getMyAllReview(@PathVariable("userid") String userId){
         List<Review> reviews = service.findAllMyReview(userId);
         return new ResponseEntity<>(reviews, HttpStatus.OK);
-    }
+    }*/
 
     // 리뷰 전체보기 - userId
     @GetMapping("/myReview/{userid}")
