@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="USER_tbl")
+@Table(name="USER_TBL")
 public class User implements Serializable {
 
     @Id
@@ -13,10 +13,10 @@ public class User implements Serializable {
     private Long seq;
     @Column(nullable = false, unique = true)
     private String userId;
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false)
     private String password;
     // 0 = 관리자, 1 = 일반사용자
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false)
     private int login_status;
 
     public User() {

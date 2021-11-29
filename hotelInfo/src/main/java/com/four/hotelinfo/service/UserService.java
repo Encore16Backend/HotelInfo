@@ -18,6 +18,7 @@ public class UserService{
     }
     public Boolean insertUser(User user) {
         Optional<User> exist = userRepo.findByUserId(user.getUserId());
+        System.out.println();
         if(exist.isPresent()){
             return false;
         }
@@ -27,10 +28,11 @@ public class UserService{
 
     public Boolean deleteUser(String userid) {
         Optional<User> exist = userRepo.findByUserId(userid);
-        if(exist.isPresent()){
+        System.out.println(exist.toString());
+        if(!exist.isPresent()){
             return false;
         }
-        userRepo.deleteMemberByUserId(userid);
+        userRepo.deleteUserByUserId(userid);
         return true;
     }
     public Boolean updateUser(User user) {

@@ -21,6 +21,11 @@ public class UserController {
 
     @PostMapping("/join")
     public ResponseEntity<?> joinUser(@RequestBody User user) {
+        if(user.getUserId().equals("admin")){
+            user.setLogin_status(0);
+        } else{
+            user.setLogin_status(1);
+        }
         boolean result = service.insertUser(user);
         if (result){
             return new ResponseEntity<>("SUCCESS", HttpStatus.CREATED);
@@ -54,9 +59,10 @@ public class UserController {
     public ResponseEntity<?> deleteMember(@PathVariable("userid") String Userid) {
         boolean result = service.deleteUser(Userid);
         if(result){
-            new ResponseEntity<>("SUCCESS",HttpStatus.OK);
+            return new ResponseEntity<>("SUCCESS",HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("FAIL", HttpStatus.CONFLICT);
         }
-        return new ResponseEntity<>("FAIL", HttpStatus.OK);
     }
     
     @GetMapping("/alluser")
