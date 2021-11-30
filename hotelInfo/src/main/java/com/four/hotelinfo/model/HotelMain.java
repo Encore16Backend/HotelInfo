@@ -1,7 +1,5 @@
 package com.four.hotelinfo.model;
 
-import org.springframework.data.domain.Page;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
