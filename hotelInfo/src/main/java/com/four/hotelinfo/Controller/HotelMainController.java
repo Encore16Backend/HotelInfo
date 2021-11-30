@@ -37,6 +37,13 @@ public class HotelMainController {
         Page<HotelMain> hotels = service.findPagingHotel(pageable);
         return new ResponseEntity<>(hotels, HttpStatus.OK);
     }
+    
+    //점수랑 같이 호텔 출력
+    @GetMapping("/hotelwithscore")
+    public ResponseEntity<List<HotelMain>> getHotelwithScore(){
+    	List<HotelMain> hotels = service.findAllHotel();
+        return new ResponseEntity<>(hotels, HttpStatus.OK);
+    }
 
     @GetMapping("/search/{keyword}")
     public ResponseEntity<Page<HotelMain>> searchHotel(

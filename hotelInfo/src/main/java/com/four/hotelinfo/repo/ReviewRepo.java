@@ -15,7 +15,7 @@ public interface ReviewRepo extends JpaRepository<Review, Long> {
 
 	// 호텔 리뷰 평점
 	
-	@Query(value="SELECT avg(review_score) FROM review_tbl WHERE hotel_id = :Id group by hotel_id", nativeQuery=true)
+	@Query(value="SELECT avg(review_score) FROM review_tbl WHERE hotelid = :Id group by hotelid", nativeQuery=true)
 	String getReviewScore(@Param("Id") Long HotelId);
 
     // 1개 조회 - seq
@@ -32,7 +32,7 @@ public interface ReviewRepo extends JpaRepository<Review, Long> {
     Page<Review> findAllByUserId(String userId, Pageable pageable);
 
     // 전체 조회 - hotelId - paging
-    Page<Review> findAllByHotelId(Long hotelId, Pageable pageable);
+    Page<Review> findAllByHotelid(Long hotelid, Pageable pageable);
 
     // 리뷰 삭제 - seq, userId
     @Transactional

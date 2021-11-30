@@ -27,6 +27,11 @@ public class HotelMainService {
         return hotelMainRepo.findAll(pageable);
     }
 
+    // find with score / hunojung
+    public List<HotelMain> findPagingHotelwithScore() {
+      return hotelMainRepo.findAllwithScore();
+    }
+    
     public Page<HotelMain> findByName(Pageable pageable, String Keyword) {
         return hotelMainRepo.findAllByHotelnameContains(Keyword, pageable);
     }

@@ -2,6 +2,7 @@ package com.four.hotelinfo.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,18 +17,30 @@ public class HotelMain implements Serializable {
     private String address;
     private String hotelimage;
     
-//    @ManyToOne
-//    @JoinColumn(name="hotelid")
-//    private Review review;
+    @OneToOne(mappedBy="hotelMain")
+    Review review;
 
 //    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "hotelId")
 //    private Review reviews;
 
+    
+    
     public HotelMain() {
     }
 
-    public Long getHotelid() {
+
+	public Review getReview() {
+		return review;
+	}
+
+
+	public void setReview(Review review) {
+		this.review = review;
+	}
+
+
+	public Long getHotelid() {
         return hotelid;
     }
 

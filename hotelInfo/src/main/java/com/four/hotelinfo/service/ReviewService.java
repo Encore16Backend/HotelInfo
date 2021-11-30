@@ -56,7 +56,7 @@ public class ReviewService {
 
     // 리뷰 전체 조회 - hotelId 10개씩
     public Page<Review> findReviewByHotelId(Pageable pages, Long hotelId){
-        return reviewRepo.findAllByHotelId(hotelId, pages);
+        return reviewRepo.findAllByHotelid(hotelId, pages);
     }
 
     //리뷰 전체 조회 - 조건없이 전부

@@ -13,17 +13,16 @@ public class Review implements Serializable {
     @Column(updatable = false)
     private String userId; // 작성한 유저ID
 
-    @Column
-    private Long hotelId;
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "hotelid")
-//    private HotelMain hotelId; // 호텔 구분번호
 
     @Column
     private String reviewContent; //리뷰 내용
     @Column
     private int reviewScore; //리뷰 점수
 
+    @ManyToOne
+    @JoinColumn(name="hotelid")
+    private HotelMain hotelMain;
+    
     public Review(){
     }
 
@@ -43,15 +42,17 @@ public class Review implements Serializable {
         this.userId = userId;
     }
 
-    public Long getHotelId() {
-        return hotelId;
-    }
+   
 
-    public void setHotelId(Long hotelId) {
-        this.hotelId = hotelId;
-    }
+    public HotelMain getHotelid() {
+		return hotelMain;
+	}
 
-    public String getReviewContent() {
+	public void setHotelid(HotelMain hotelMain) {
+		this.hotelMain = hotelMain;
+	}
+
+	public String getReviewContent() {
         return reviewContent;
     }
 
@@ -67,14 +68,4 @@ public class Review implements Serializable {
         this.reviewScore = reviewScore;
     }
 
-    @Override
-    public String toString() {
-        return "Review{" +
-                "seq=" + seq +
-                ", userId='" + userId + '\'' +
-                ", hotelId=" + hotelId +
-                ", reviewContent='" + reviewContent + '\'' +
-                ", reviewScore=" + reviewScore +
-                '}';
-    }
 }
