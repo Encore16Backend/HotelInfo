@@ -17,6 +17,10 @@ public class HotelMain implements Serializable {
     private String hotelname;
     private String address;
     private String hotelimage;
+    
+//    @ManyToOne
+//    @JoinColumn(name="hotelid")
+//    private Review review;
 
 //    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "hotelId")
