@@ -40,9 +40,9 @@ public class ReviewService {
     }
     
     // 리뷰 1개 조회 - userId
-    public Review findMyReview(String userId) {
-        return reviewRepo.findByUserId(userId);
-    }
+//    public Review findMyReview(String userId) {
+//        return reviewRepo.findByUserId(userId);
+//    }
 
     // 리뷰 전체조회 - userId 10개씩
     public Page<Review> findReviewByUserId(Pageable pageable, String userId){
@@ -56,7 +56,7 @@ public class ReviewService {
 
     // 리뷰 전체 조회 - hotelId 10개씩
     public Page<Review> findReviewByHotelId(Pageable pages, Long hotelId){
-        return reviewRepo.findAllByHotelMain(hotelId, pages);
+        return reviewRepo.findAllByHotelid(hotelId, pages);
     }
 
     //리뷰 전체 조회 - 조건없이 전부

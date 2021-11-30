@@ -35,6 +35,7 @@ public class UserService{
         userRepo.deleteUserByUserId(userid);
         return true;
     }
+
     public Boolean updateUser(User user) {
         Optional<User> exist = findUser(user.getUserId());
         if(exist.isPresent()){

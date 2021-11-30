@@ -17,8 +17,7 @@ public class HotelMain implements Serializable {
     private String address;
     private String hotelimage;
     
-    @OneToOne(mappedBy="hotelMain")
-    private Review review;
+    private Long score;
 
 //    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "hotelId")
@@ -29,18 +28,15 @@ public class HotelMain implements Serializable {
     public HotelMain() {
     }
 
+    public Long getScore() {
+        return score;
+    }
 
-	public Review getReview() {
-		return review;
-	}
+    public void setScore(Long score) {
+        this.score = score;
+    }
 
-
-	public void setReview(Review review) {
-		this.review = review;
-	}
-
-
-	public Long getHotelid() {
+    public Long getHotelid() {
         return hotelid;
     }
 

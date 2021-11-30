@@ -14,7 +14,6 @@ import java.util.Optional;
 public interface ReviewRepo extends JpaRepository<Review, Long> {
 
 	// 호텔 리뷰 평점
-	
 	@Query(value="SELECT avg(review_score) FROM review_tbl WHERE hotelid = :Id group by hotelid", nativeQuery=true)
 	String getReviewScore(@Param("Id") Long HotelId);
 
@@ -32,7 +31,7 @@ public interface ReviewRepo extends JpaRepository<Review, Long> {
     Page<Review> findAllByUserId(String userId, Pageable pageable);
 
     // 전체 조회 - hotelId - paging
-    Page<Review> findAllByHotelMain(Long hotelid, Pageable pageable);
+    Page<Review> findAllByHotelid(Long hotelid, Pageable pageable);
 
     // 리뷰 삭제 - seq, userId
     @Transactional

@@ -43,13 +43,6 @@ public class ReviewController {
         return new ResponseEntity<>("FAIL", HttpStatus.OK);
     }
 
-    // 리뷰 1개 보기 - userId
-    /*@GetMapping("/myAllReview/{userid}")
-    public ResponseEntity<List<Review>> getMyAllReview(@PathVariable("userid") String userId){
-        List<Review> reviews = service.findAllMyReview(userId);
-        return new ResponseEntity<>(reviews, HttpStatus.OK);
-    }*/
-
     // 리뷰 전체보기 - userId - MyPage(127.0.0.1:9000/review/myReview/유저아이디?page=n)
     @GetMapping("/myReview/{userid}")
     public ResponseEntity<Page<Review>> getMyOneReview(

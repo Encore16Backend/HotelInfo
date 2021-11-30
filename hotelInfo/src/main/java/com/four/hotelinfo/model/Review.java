@@ -13,16 +13,21 @@ public class Review implements Serializable {
     @Column(updatable = false)
     private String userId; // 작성한 유저ID
 
-
     @Column
     private String reviewContent; //리뷰 내용
     @Column
     private int reviewScore; //리뷰 점수
 
-    @OneToOne
-    @JoinColumn(name="hotelid")
-    private HotelMain hotelMain;
-    
+    private Long hotelid;
+
+    public Long getHotelid() {
+        return hotelid;
+    }
+
+    public void setHotelid(Long hotelid) {
+        this.hotelid = hotelid;
+    }
+
     public Review(){
     }
 
@@ -40,14 +45,6 @@ public class Review implements Serializable {
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public HotelMain getHotelMain() {
-        return hotelMain;
-    }
-
-    public void setHotelMain(HotelMain hotelMain) {
-        this.hotelMain = hotelMain;
     }
 
     public String getReviewContent() {
