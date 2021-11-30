@@ -1,12 +1,11 @@
 package com.four.hotelinfo.Controller;
 
-import com.four.hotelinfo.model.Hotel_Main;
+import com.four.hotelinfo.model.HotelMain;
 import com.four.hotelinfo.service.HotelMainService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,17 +23,27 @@ public class HotelMainController {
     }
 
     @GetMapping("/allhotel")
-    public ResponseEntity<List<Hotel_Main>> getAllHotels() {
-        List<Hotel_Main> hotels = service.findAllHotel();
+    public ResponseEntity<List<HotelMain>> getAllHotels() {
+        List<HotelMain> hotels = service.findAllHotel();
         return new ResponseEntity<>(hotels, HttpStatus.OK);
     }
 
     @GetMapping("/hotel")
-    public ResponseEntity<Page<Hotel_Main>> getHotels(@RequestParam(required = false, defaultValue = "1", value = "page") int page){
+    public ResponseEntity<Page<HotelMain>> getHotels(
+            @RequestParam(required = false, defaultValue = "1", value = "page") int page){
         Pageable pageable = PageRequest.of(page-1, 12, Sort.by(Sort.Direction.ASC, "hotelid"));
 //        System.out.println("페이지 넘버 : "+pageable.getPageNumber());
 //        System.out.println("Offset : "+pageable.getOffset());
-        Page<Hotel_Main> hotels = service.findPagingHotel(pageable);
+        Page<HotelMain> hotels = service.findPagingHotel(pageable);
+        return new ResponseEntity<>(hotels, HttpStatus.OK);
+    }
+
+    @GetMapping("/search/{keyword}")
+    public ResponseEntity<Page<HotelMain>> searchHotel(
+            @PathVariable("keyword") String keyword,
+            @RequestParam(required = false, defaultValue = "1", value = "page") int page){
+        Pageable pagealbe = PageRequest.of(page-1, 12, Sort.by(Sort.Direction.ASC, "hotelid"));
+        Page<HotelMain> hotels = service.findByName(pagealbe, keyword);
         return new ResponseEntity<>(hotels, HttpStatus.OK);
     }
 

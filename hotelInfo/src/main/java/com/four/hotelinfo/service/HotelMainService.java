@@ -1,13 +1,11 @@
 package com.four.hotelinfo.service;
 
-import com.four.hotelinfo.model.Hotel_Main;
+import com.four.hotelinfo.model.HotelMain;
 import com.four.hotelinfo.repo.HotelMainRepo;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -20,17 +18,18 @@ public class HotelMainService {
         this.hotelMainRepo = hotelMainRepo;
     }
 
-    public List<Hotel_Main> findAllHotel() {
+    public List<HotelMain> findAllHotel() {
         return hotelMainRepo.findAll(Sort.by(Sort.Direction.ASC, "hotelid"));
     }
 
-    public Page<Hotel_Main> findPagingHotel(Pageable pageable) {
+    public Page<HotelMain> findPagingHotel(Pageable pageable) {
 //        System.out.println(pageable.getPageNumber());
         return hotelMainRepo.findAll(pageable);
     }
 
-
-
+    public Page<HotelMain> findByName(Pageable pageable, String Keyword) {
+        return hotelMainRepo.findAllByHotelnameContains(Keyword, pageable);
+    }
 
 
 

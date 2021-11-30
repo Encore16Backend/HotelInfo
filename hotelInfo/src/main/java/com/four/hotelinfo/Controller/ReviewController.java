@@ -2,6 +2,10 @@ package com.four.hotelinfo.Controller;
 
 import com.four.hotelinfo.model.Review;
 import com.four.hotelinfo.service.ReviewService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,22 +50,28 @@ public class ReviewController {
         return new ResponseEntity<>(reviews, HttpStatus.OK);
     }*/
 
-    // 리뷰 전체보기 - userId
+    // 리뷰 전체보기 - userId - MyPage(127.0.0.1:9000/review/myReview/유저아이디?page=n)
     @GetMapping("/myReview/{userid}")
-    public ResponseEntity<Review> getMyOneReview(@PathVariable("userid") String userId){
-        Review review = service.findMyReview(userId);
+    public ResponseEntity<Page<Review>> getMyOneReview(
+            @PathVariable("userid") String userId,
+            @RequestParam(required = false, defaultValue = "1", value = "page") int page){
+        Pageable pageable = PageRequest.of(page-1, 10, Sort.by(Sort.Direction.ASC, "seq"));
+        Page<Review> review = service.findReviewByUserId(pageable, userId);
         return new ResponseEntity<>(review, HttpStatus.OK);
     }
 
 
-    // 리뷰 전체보기 - hotelId
+    // 리뷰 전체보기 - hotelId - Hotel Detail(127.0.0.1:9000/review/hotelAllReview/호텔명?page=n)
     @GetMapping("/hotelAllReview/{hotelid}")
-    public ResponseEntity<List<Review>> getHotelAllReview(@PathVariable("hotelid") Long hotelId){
-        List<Review> review = service.findReviewByHotelId(hotelId);
+    public ResponseEntity<Page<Review>> getHotelAllReview(
+            @PathVariable("hotelid") Long hotelId,
+            @RequestParam(required = false, defaultValue = "1", value = "page") int page){
+        Pageable pageable = PageRequest.of(page-1, 10, Sort.by(Sort.Direction.ASC, "seq"));
+        Page<Review> review = service.findReviewByHotelId(pageable, hotelId);
         return new ResponseEntity<>(review, HttpStatus.OK);
     }
 
-    // 리뷰 전체보기 (조건X)
+    // 리뷰 전체보기 (조건X) - Admin
     @GetMapping("/allReview")
     public ResponseEntity<List<Review>> getAllReview(){
         List<Review> reviews = service.findAllReview();

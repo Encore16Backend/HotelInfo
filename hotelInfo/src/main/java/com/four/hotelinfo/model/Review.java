@@ -12,8 +12,11 @@ public class Review implements Serializable {
     private Long seq; //리뷰 번호 (리뷰 조회시 시간순서별 정렬 기준)
     @Column(nullable = false, updatable = false)
     private String userId; // 작성한 유저ID
-    @Column(nullable = false, updatable = false)
-    private Long hotelId; // 호텔 구분번호
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "hotelid")
+    private HotelMain hotelId; // 호텔 구분번호
+
     @Column(nullable = false)
     private String reviewContent; //리뷰 내용
     @Column(nullable = false)
@@ -38,11 +41,11 @@ public class Review implements Serializable {
         this.userId = userId;
     }
 
-    public Long getHotelId() {
+    public HotelMain getHotelId() {
         return hotelId;
     }
 
-    public void setHotelId(Long hotelId) {
+    public void setHotelId(HotelMain hotelId) {
         this.hotelId = hotelId;
     }
 

@@ -1,11 +1,14 @@
 package com.four.hotelinfo.model;
 
+import org.springframework.data.domain.Page;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="HOTEL_MAIN_TBL")
-public class Hotel_Main implements Serializable {
+public class HotelMain implements Serializable {
 
     @Id
     @Column(nullable = false, updatable = false)
@@ -15,7 +18,11 @@ public class Hotel_Main implements Serializable {
     private String address;
     private String hotelimage;
 
-    public Hotel_Main() {
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hotelId")
+    private Review reviews;
+
+    public HotelMain() {
     }
 
     public Long getHotelid() {

@@ -2,6 +2,8 @@ package com.four.hotelinfo.service;
 
 import com.four.hotelinfo.model.Review;
 import com.four.hotelinfo.repo.ReviewRepo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,14 +39,19 @@ public class ReviewService {
         return reviewRepo.findByUserId(userId);
     }
 
-    // 리뷰 전체조회 - userId
-    public List<Review> findAllMyReview(String userId){
-        return reviewRepo.findAllByUserId(userId);
+    // 리뷰 전체조회 - userId 10개씩
+    public Page<Review> findReviewByUserId(Pageable pageable, String userId){
+        return reviewRepo.findAllByUserId(userId, pageable);
     }
 
     // 리뷰 전체조회 - hotelId
-    public List<Review> findReviewByHotelId(Long hotelId){
+    /*public List<Review> findReviewByHotelId(Long hotelId){
         return reviewRepo.findByHotelId(hotelId);
+    }*/
+
+    // 리뷰 전체 조회 - hotelId 10개씩
+    public Page<Review> findReviewByHotelId(Pageable pages, Long hotelId){
+        return reviewRepo.findAllByHotelId(hotelId, pages);
     }
 
     //리뷰 전체 조회 - 조건없이 전부

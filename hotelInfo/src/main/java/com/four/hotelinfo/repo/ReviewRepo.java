@@ -1,6 +1,8 @@
 package com.four.hotelinfo.repo;
 
 import com.four.hotelinfo.model.Review;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,10 +21,11 @@ public interface ReviewRepo extends JpaRepository<Review, Long> {
     Optional<Review> findBySeqAndUserId(Long seq,String userId);
 
     // 전체 조회 - userId
-    List<Review> findAllByUserId(String userId);
+    // List<Review> findAllByUserId(String userId);
+    Page<Review> findAllByUserId(String userId, Pageable pageable);
 
-    // 전체 조회 - hotelId
-    List<Review> findByHotelId(Long hotelId);
+    // 전체 조회 - hotelId - paging
+    Page<Review> findAllByHotelId(Long hotelId, Pageable pageable);
 
     // 리뷰 삭제 - seq, userId
     @Transactional
