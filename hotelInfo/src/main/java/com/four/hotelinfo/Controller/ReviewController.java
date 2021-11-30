@@ -68,9 +68,8 @@ public class ReviewController {
         if(score==null)score="0"; // null 일 경우 0을 리턴
         return new ResponseEntity<>(score, HttpStatus.OK);
     }
-    
-    // 리뷰 전체보기 - hotelId
 
+    // 리뷰 전체보기 - hotelId
     @GetMapping("/hotelAllReview/{hotelid}")
     public ResponseEntity<Page<Review>> getHotelAllReview(
             @PathVariable("hotelid") Long hotelId,
