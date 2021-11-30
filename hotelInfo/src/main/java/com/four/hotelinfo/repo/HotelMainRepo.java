@@ -15,7 +15,7 @@ public interface HotelMainRepo extends JpaRepository<HotelMain, Long> {
 
     Page<HotelMain> findAllByHotelnameContains(String Keyword, Pageable pageable);
 
-    @Modifying
+    @Modifying 
     @Query(value="MERGE INTO hotel_main_tbl H\r\n" +
             "USING (SELECT h.hotelid hotelid, round(avg(r.review_score),1) score from HOTEL_MAIN_TBL h, review_tbl r where (h.hotelid between :cnt and :cnt + 12) and (h.hotelid = r.hotelid(+)) group by h.hotelid order by h.hotelid) S\r\n" +
             "ON (H.hotelid = S.hotelid)\r\n" +
