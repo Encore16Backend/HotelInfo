@@ -17,7 +17,7 @@ public class HotelMain implements Serializable {
     private String address;
     private String hotelimage;
     
-    private Long score;
+    private double score;
 
 //    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "hotelId")
@@ -28,11 +28,11 @@ public class HotelMain implements Serializable {
     public HotelMain() {
     }
 
-    public Long getScore() {
+    public double getScore() {
         return score;
     }
 
-    public void setScore(Long score) {
+    public void setScore(double score) {
         this.score = score;
     }
 

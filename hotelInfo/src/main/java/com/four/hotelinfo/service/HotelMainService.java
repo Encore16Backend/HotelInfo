@@ -26,6 +26,7 @@ public class HotelMainService {
 //        System.out.println(pageable.getPageNumber());
         try {
             hotelMainRepo.hotelSetScore(pageable.getOffset());
+
         } catch (Exception e) {
             e.getMessage();
         }
