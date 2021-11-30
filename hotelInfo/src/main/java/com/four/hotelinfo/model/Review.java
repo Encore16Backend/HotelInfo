@@ -19,7 +19,7 @@ public class Review implements Serializable {
     @Column
     private int reviewScore; //리뷰 점수
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="hotelid")
     private HotelMain hotelMain;
     
@@ -42,17 +42,15 @@ public class Review implements Serializable {
         this.userId = userId;
     }
 
-   
+    public HotelMain getHotelMain() {
+        return hotelMain;
+    }
 
-    public HotelMain getHotelid() {
-		return hotelMain;
-	}
+    public void setHotelMain(HotelMain hotelMain) {
+        this.hotelMain = hotelMain;
+    }
 
-	public void setHotelid(HotelMain hotelMain) {
-		this.hotelMain = hotelMain;
-	}
-
-	public String getReviewContent() {
+    public String getReviewContent() {
         return reviewContent;
     }
 

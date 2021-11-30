@@ -32,7 +32,7 @@ public interface ReviewRepo extends JpaRepository<Review, Long> {
     Page<Review> findAllByUserId(String userId, Pageable pageable);
 
     // 전체 조회 - hotelId - paging
-    Page<Review> findAllByHotelid(Long hotelid, Pageable pageable);
+    Page<Review> findAllByHotelMain(Long hotelid, Pageable pageable);
 
     // 리뷰 삭제 - seq, userId
     @Transactional
