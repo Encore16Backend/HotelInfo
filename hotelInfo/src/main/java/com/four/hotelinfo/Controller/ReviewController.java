@@ -60,8 +60,20 @@ public class ReviewController {
         return new ResponseEntity<>(review, HttpStatus.OK);
     }
 
+<<<<<<< HEAD
 
     // 리뷰 전체보기 - hotelId - Hotel Detail(127.0.0.1:9000/review/hotelAllReview/호텔명?page=n)
+=======
+    //리뷰 평균 점수 보기
+    @GetMapping("/hotelReviewScore/{hotelid}")
+    public ResponseEntity<String> getHotelReviewScore(@PathVariable("hotelid") Long hotelId){
+        String score = service.getReviewScore(hotelId);
+        if(score==null)score="0"; // null 일 경우 0을 리턴
+        return new ResponseEntity<>(score, HttpStatus.OK);
+    }
+    
+    // 리뷰 전체보기 - hotelId
+>>>>>>> b8a6d6077f605909aa4897a53e24461b025ec5f1
     @GetMapping("/hotelAllReview/{hotelid}")
     public ResponseEntity<Page<Review>> getHotelAllReview(
             @PathVariable("hotelid") Long hotelId,
