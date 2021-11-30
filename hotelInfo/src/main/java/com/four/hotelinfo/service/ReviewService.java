@@ -32,6 +32,11 @@ public class ReviewService {
         return true;
     }
 
+    // 호텔 리뷰 평점
+    public String getReviewScore(Long hotelId) {
+    	return reviewRepo.getReviewScore(hotelId);
+    }
+    
     // 리뷰 1개 조회 - userId
     public Review findMyReview(String userId) {
         return reviewRepo.findByUserId(userId);
