@@ -24,12 +24,7 @@ public class HotelMainService {
 
     public Page<HotelMain> findPagingHotel(Pageable pageable) {
 //        System.out.println(pageable.getPageNumber());
-        try {
-            hotelMainRepo.hotelSetScore(pageable.getOffset());
-
-        } catch (Exception e) {
-            e.getMessage();
-        }
+        hotelMainRepo.hotelSetScore(pageable.getOffset());
         return hotelMainRepo.findAll(pageable);
     }
     
