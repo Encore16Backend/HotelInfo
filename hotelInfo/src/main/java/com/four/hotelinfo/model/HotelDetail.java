@@ -9,14 +9,14 @@ import javax.persistence.Table;
 @Table(name="HOTEL_DETAIL_TBL")
 public class HotelDetail {
     @Id
-    @Column(nullable = false, updatable = false)
-    private int hotelId; //호텔 넘버
-    private String reservationPage; //예약URL
+    @Column(updatable = false)
+    private int hotelid; //호텔 넘버
+    private String reservationpage; //예약URL
     private String phone; //전화번호
     private String summary;
-    private String checkIn; //체크인,아웃 - 예시: 15:00, 월~목 18:00
-    private String checkOut;
-    private String hotelImages; //이미지URL
+    private String checkin; //체크인,아웃 - 예시: 15:00, 월~목 18:00
+    private String checkout;
+    private String hotelimages; //이미지URL
     private String seminar; //이하 FALSE or TRUE
     private String sports;
     private String sauna;
@@ -25,23 +25,23 @@ public class HotelDetail {
     private String BBQ;
     private String bicycle;
     private String fitness;
-    private String publicPC;
-    private String publicShower;
+    private String publicpc;
+    private String publicshower;
 
-    public int getHotelId() {
-        return hotelId;
+    public int getHotelid() {
+        return hotelid;
     }
 
-    public void setHotelId(int hotelId) {
-        this.hotelId = hotelId;
+    public void setHotelid(int hotelid) {
+        this.hotelid = hotelid;
     }
 
-    public String getReservationPage() {
-        return reservationPage;
+    public String getReservationpage() {
+        return reservationpage;
     }
 
-    public void setReservationPage(String reservationPage) {
-        this.reservationPage = reservationPage;
+    public void setReservationpage(String reservationpage) {
+        this.reservationpage = reservationpage;
     }
 
     public String getPhone() {
@@ -60,28 +60,28 @@ public class HotelDetail {
         this.summary = summary;
     }
 
-    public String getCheckIn() {
-        return checkIn;
+    public String getCheckin() {
+        return checkin;
     }
 
-    public void setCheckIn(String checkIn) {
-        this.checkIn = checkIn;
+    public void setCheckin(String checkin) {
+        this.checkin = checkin;
     }
 
-    public String getCheckOut() {
-        return checkOut;
+    public String getCheckout() {
+        return checkout;
     }
 
-    public void setCheckOut(String checkOut) {
-        this.checkOut = checkOut;
+    public void setCheckout(String checkout) {
+        this.checkout = checkout;
     }
 
-    public String getHotelImages() {
-        return hotelImages;
+    public String getHotelimages() {
+        return hotelimages;
     }
 
-    public void setHotelImages(String hotelImages) {
-        this.hotelImages = hotelImages;
+    public void setHotelimages(String hotelimages) {
+        this.hotelimages = hotelimages;
     }
 
     public String getSeminar() {
@@ -148,32 +148,32 @@ public class HotelDetail {
         this.fitness = fitness;
     }
 
-    public String getPublicPC() {
-        return publicPC;
+    public String getPublicpc() {
+        return publicpc;
     }
 
-    public void setPublicPC(String publicPC) {
-        this.publicPC = publicPC;
+    public void setPublicpc(String publicpc) {
+        this.publicpc = publicpc;
     }
 
-    public String getPublicShower() {
-        return publicShower;
+    public String getPublicshower() {
+        return publicshower;
     }
 
-    public void setPublicShower(String publicShower) {
-        this.publicShower = publicShower;
+    public void setPublicshower(String publicshower) {
+        this.publicshower = publicshower;
     }
 
     @Override
     public String toString() {
         return "HotelDetail{" +
-                "hotelId=" + hotelId +
-                ", reservationPage='" + reservationPage + '\'' +
+                "hotelId=" + hotelid +
+                ", reservationpage='" + reservationpage + '\'' +
                 ", phone='" + phone + '\'' +
                 ", summary='" + summary + '\'' +
-                ", checkIn='" + checkIn + '\'' +
-                ", checkOut='" + checkOut + '\'' +
-                ", hotelImages='" + hotelImages + '\'' +
+                ", checkin='" + checkin + '\'' +
+                ", checkout='" + checkout + '\'' +
+                ", hotelimages='" + hotelimages + '\'' +
                 ", seminar='" + seminar + '\'' +
                 ", sports='" + sports + '\'' +
                 ", sauna='" + sauna + '\'' +
@@ -182,8 +182,8 @@ public class HotelDetail {
                 ", BBQ='" + BBQ + '\'' +
                 ", bicycle='" + bicycle + '\'' +
                 ", fitness='" + fitness + '\'' +
-                ", publicPC='" + publicPC + '\'' +
-                ", publicShower='" + publicShower + '\'' +
+                ", publicpc='" + publicpc + '\'' +
+                ", publicshower='" + publicshower + '\'' +
                 '}';
     }
 }

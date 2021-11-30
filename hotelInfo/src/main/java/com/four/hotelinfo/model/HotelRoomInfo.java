@@ -1,60 +1,58 @@
 package com.four.hotelinfo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="HOTEL_ROOM_INFO_TBL")
 public class HotelRoomInfo {
     @Id
-    @Column(nullable = false, updatable = false)
-    private int seq; //엑셀상에서 룸정보 인덱스 넘버
-    @Column(nullable = false, updatable = false)
-    private int hotelId; //룸정보가 소속되는 호텔넘버. 한 호텔이 여러 객실을 가짐
-    private String roomName;
-    private String Info;
+    @Column(updatable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long seq; //엑셀상에서 룸정보 인덱스 넘버
+    @Column(updatable = false)
+    private Long hotelid; //룸정보가 소속되는 호텔넘버. 한 호텔이 여러 객실을 가짐
+    private String roomname;
+    private String info;
 
-    public int getSeq() {
+    public Long getSeq() {
         return seq;
     }
 
-    public void setSeq(int seq) {
+    public void setSeq(Long seq) {
         this.seq = seq;
     }
 
-    public int getHotelId() {
-        return hotelId;
+    public Long getHotelid() {
+        return hotelid;
     }
 
-    public void setHotelId(int hotelId) {
-        this.hotelId = hotelId;
+    public void setHotelid(Long hotelid) {
+        this.hotelid = hotelid;
     }
 
-    public String getRoomName() {
-        return roomName;
+    public String getRoomname() {
+        return roomname;
     }
 
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
+    public void setRoomname(String roomname) {
+        this.roomname = roomname;
     }
 
     public String getInfo() {
-        return Info;
+        return info;
     }
 
     public void setInfo(String info) {
-        Info = info;
+        this.info = info;
     }
 
     @Override
     public String toString() {
         return "HotelRoomInfo{" +
                 "seq=" + seq +
-                ", hotelId=" + hotelId +
-                ", roomName='" + roomName + '\'' +
-                ", Info='" + Info + '\'' +
+                ", hotelid=" + hotelid +
+                ", roomname='" + roomname + '\'' +
+                ", infoo='" + info + '\'' +
                 '}';
     }
 }
