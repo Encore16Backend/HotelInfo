@@ -1,7 +1,17 @@
 package com.four.hotelinfo.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="HOTEL_ROOM_INFO_TBL")
 public class HotelRoomInfo {
+    @Id
+    @Column(nullable = false, updatable = false)
     private int seq; //엑셀상에서 룸정보 인덱스 넘버
+    @Column(nullable = false, updatable = false)
     private int hotelId; //룸정보가 소속되는 호텔넘버. 한 호텔이 여러 객실을 가짐
     private String roomName;
     private String Info;

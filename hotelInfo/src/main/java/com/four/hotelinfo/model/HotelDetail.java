@@ -1,6 +1,15 @@
 package com.four.hotelinfo.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="HOTEL_DETAIL_TBL")
 public class HotelDetail {
+    @Id
+    @Column(nullable = false, updatable = false)
     private int hotelId; //호텔 넘버
     private String reservationPage; //예약URL
     private String phone; //전화번호
