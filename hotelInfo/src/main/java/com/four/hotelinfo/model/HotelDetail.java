@@ -4,10 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name="HOTEL_DETAIL_TBL")
-public class HotelDetail {
+public class HotelDetail implements Serializable {
     @Id
     @Column(updatable = false)
     private int hotelid; //호텔 넘버

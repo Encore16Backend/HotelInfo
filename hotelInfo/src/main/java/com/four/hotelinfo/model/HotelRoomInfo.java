@@ -1,10 +1,11 @@
 package com.four.hotelinfo.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name="HOTEL_ROOM_INFO_TBL")
-public class HotelRoomInfo {
+public class HotelRoomInfo implements Serializable {
     @Id
     @Column(updatable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
