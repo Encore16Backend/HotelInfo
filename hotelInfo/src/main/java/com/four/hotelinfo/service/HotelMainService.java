@@ -19,7 +19,7 @@ public class HotelMainService {
     }
 
     public List<HotelMain> findAllHotel() {
-        return hotelMainRepo.findAll(Sort.by(Sort.Direction.ASC, "hotelid"));
+        return hotelMainRepo.findAll();
     }
 
     public Page<HotelMain> findPagingHotel(Pageable pageable) {
