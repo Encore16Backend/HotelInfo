@@ -63,14 +63,14 @@ public class ReviewController {
     }
 
     // 리뷰 전체보기 - hotelId
-    @GetMapping("/hotelAllReview/{hotelid}")
-    public ResponseEntity<Page<Review>> getHotelAllReview(
-            @PathVariable("hotelid") Long hotelId,
-            @RequestParam(required = false, defaultValue = "1", value = "page") int page){
-        Pageable pageable = PageRequest.of(page-1, 10, Sort.by(Sort.Direction.ASC, "seq"));
-        Page<Review> review = service.findReviewByHotelId(pageable, hotelId);
-        return new ResponseEntity<>(review, HttpStatus.OK);
-    }
+//    @GetMapping("/hotelAllReview/{hotelid}")
+//    public ResponseEntity<Page<Review>> getHotelAllReview(
+//            @PathVariable("hotelid") Long hotelId,
+//            @RequestParam(required = false, defaultValue = "1", value = "page") int page){
+//        Pageable pageable = PageRequest.of(page-1, 10, Sort.by(Sort.Direction.ASC, "seq"));
+//        Page<Review> review = service.findReviewByHotelId(pageable, hotelId);
+//        return new ResponseEntity<>(review, HttpStatus.OK);
+//    }
 
     // 리뷰 전체보기 (조건X) - Admin
     @GetMapping("/allReview")
