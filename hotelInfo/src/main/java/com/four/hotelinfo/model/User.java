@@ -13,7 +13,7 @@ public class User implements Serializable {
     private Long seq;
     @Column(nullable = false, unique = true)
     private String userId;
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     private String password;
     // 0 = 관리자, 1 = 일반사용자
     @Column(nullable = false, updatable = false)

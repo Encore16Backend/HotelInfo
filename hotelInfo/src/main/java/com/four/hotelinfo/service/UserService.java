@@ -18,7 +18,6 @@ public class UserService{
     }
     public Boolean insertUser(User user) {
         Optional<User> exist = userRepo.findByUserId(user.getUserId());
-        System.out.println();
         if(exist.isPresent()){
             return false;
         }
