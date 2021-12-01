@@ -36,6 +36,10 @@ public class HotelMainService {
         return hotelMainRepo.findAllByHotelnameLikeOrAddressLike(Keyword1, Keyword2, pageable);
     }
 
+    public HotelMain findHotel(Long hotel){
+        return hotelMainRepo.findByHotelid(hotel);
+    }
+
 
 
 }

@@ -42,4 +42,6 @@ public interface HotelMainRepo extends JpaRepository<HotelMain, Long> {
             "WHEN MATCHED THEN\r\n" +
             "UPDATE SET H.SCORE = S.SCORE", nativeQuery=true)
     void hotelSetScore(@Param("cnt") Long cnt);
+
+	HotelMain findByHotelid(Long hotelid);
 }
