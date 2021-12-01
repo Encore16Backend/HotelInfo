@@ -50,7 +50,7 @@ public class DetailController {
     public ResponseEntity<Page<Review>> getHotelAllReview(
             @PathVariable("hotelid") Long hotelId,
             @RequestParam(required = false, defaultValue = "1", value = "page") int page){
-        Pageable pageable = PageRequest.of(page-1, 10, Sort.by(Sort.Direction.ASC, "seq"));
+        Pageable pageable = PageRequest.of(page-1, 5, Sort.by(Sort.Direction.ASC, "seq"));
         Page<Review> review = reviewService.findReviewByHotelId(pageable, hotelId);
         return new ResponseEntity<>(review, HttpStatus.OK);
     }

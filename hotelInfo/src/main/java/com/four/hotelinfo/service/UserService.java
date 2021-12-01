@@ -55,7 +55,7 @@ public class UserService{
         if(exist.isPresent()){
             User u = exist.get();
             if (user.getPassword().equals(u.getPassword())){
-                return user;
+                return u;
             }
         }
         return new User();
