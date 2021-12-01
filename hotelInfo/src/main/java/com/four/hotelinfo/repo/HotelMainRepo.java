@@ -15,7 +15,16 @@ import javax.transaction.Transactional;
 
 public interface HotelMainRepo extends JpaRepository<HotelMain, Long> {
 
-    Page<HotelMain> findAllByHotelnameContains(String Keyword, Pageable pageable);
+    Page<HotelMain> findAllByHotelnameLike(String Keyword, Pageable pageable);
+
+    @Modifying
+    @Transactional
+    @Query(value="MERGE INTO hotel_main_tbl H\r\n" +
+            "USING (SELECT h.hotelid hotelid, nvl(round(avg(r.review_score),1),0) score from HOTEL_MAIN_TBL h, review_tbl r where (h.hotelname like :=keyword) and (h.hotelid = r.hotelid(+)) group by h.hotelid order by h.hotelid) S\r\n" +
+            "ON (H.hotelid = S.hotelid)\r\n" +
+            "WHEN MATCHED THEN\r\n" +
+            "UPDATE SET H.SCORE = S.SCORE", nativeQuery=true)
+    void hotelSearchName(@Param("keyword") String keyword);
 
     @Modifying
     @Transactional

@@ -13,7 +13,7 @@ public class HotelDetailService {
         this.hotelDetailRepo = hotelDetailRepo;
     }
 
-    public HotelDetail findAllHotelRoomInfo(int hotelid) {
+    public HotelDetail findHotelInfo(int hotelid) {
         return hotelDetailRepo.findByHotelid(hotelid);
     }
 
