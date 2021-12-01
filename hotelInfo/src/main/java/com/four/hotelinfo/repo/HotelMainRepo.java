@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 
 public interface HotelMainRepo extends JpaRepository<HotelMain, Long> {
 
-    Page<HotelMain> findAllByHotelnameLike(String Keyword, Pageable pageable);
+    Page<HotelMain> findAllByHotelnameLikeOrAddressLike(String Keyword1, String Keyword2, Pageable pageable);
 
     @Modifying
     @Transactional
@@ -24,7 +24,7 @@ public interface HotelMainRepo extends JpaRepository<HotelMain, Long> {
     		"SELECT h.hotelid hotelid, nvl(round(avg(r.review_score),1),0) score\r\n" + 
     		"from HOTEL_MAIN_TBL h, review_tbl r, ( SELECT hotelid\r\n" + 
     		"FROM (SELECT ROWNUM r, h1.*\r\n" + 
-    		"FROM (select hotelid from hotel_main_tbl where hotelname like :keyword order by hotelid) h1)\r\n" + 
+    		"FROM (select hotelid from hotel_main_tbl where hotelname like :keyword or address like :keyword order by hotelid) h1)\r\n" +
     		"WHERE r between :cnt and :cnt + 12) h2\r\n" + 
     		"where  (h.hotelid = h2.hotelid) and (h.hotelid = r.hotelid(+))\r\n" + 
     		"group by h.hotelid\r\n" + 
