@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface ReviewRepo extends JpaRepository<Review, Long> {
 
 	// 호텔 리뷰 평점
-	@Query(value="SELECT avg(review_score) FROM review_tbl WHERE hotelid = :Id group by hotelid", nativeQuery=true)
+	@Query(value="SELECT round(avg(review_score),1) FROM review_tbl WHERE hotelid = :Id group by hotelid", nativeQuery=true)
 	String getReviewScore(@Param("Id") Long HotelId);
 
     // 1개 조회 - seq
