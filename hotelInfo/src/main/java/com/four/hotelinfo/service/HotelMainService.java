@@ -29,7 +29,9 @@ public class HotelMainService {
     }
     
     public Page<HotelMain> findByName(Pageable pageable, String Keyword) {
-        return hotelMainRepo.findAllByHotelnameContains(Keyword, pageable);
+        System.out.println(Keyword);
+        hotelMainRepo.hotelSearchName(Keyword);
+        return hotelMainRepo.findAllByHotelnameLike(Keyword, pageable);
     }
 
 

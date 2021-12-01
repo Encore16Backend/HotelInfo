@@ -37,13 +37,13 @@ public class HotelMainController {
         Page<HotelMain> hotels = service.findPagingHotel(pageable);
         return new ResponseEntity<>(hotels, HttpStatus.OK);
     }
-
-    @GetMapping("/search/{keyword}")
+//    @PathVariable("keyword") String keyword
+    @GetMapping("/search")
     public ResponseEntity<Page<HotelMain>> searchHotel(
-            @PathVariable("keyword") String keyword,
+            @RequestParam(required = false, defaultValue = "", value = "keyword") String keyword,
             @RequestParam(required = false, defaultValue = "1", value = "page") int page){
         Pageable pagealbe = PageRequest.of(page-1, 12, Sort.by(Sort.Direction.ASC, "hotelid"));
-        Page<HotelMain> hotels = service.findByName(pagealbe, keyword); 
+        Page<HotelMain> hotels = service.findByName(pagealbe, "%"+keyword+"%");
         return new ResponseEntity<>(hotels, HttpStatus.OK);
     }
 
