@@ -35,7 +35,7 @@ public class ReviewController {
 
     //리뷰 삭제 - seq, userId
     @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteMember(
+    public ResponseEntity<?> deleteReview(
             @RequestParam(required = true, value="seq") Long seq,
             @RequestParam(required = true, value="userid") String Userid) {
         boolean result = service.deleteReview(seq,Userid);
