@@ -27,7 +27,7 @@ public class ReviewService {
     // 리뷰 삭제 - Long seq, String userId
     public Boolean deleteReview(Long seq,String userid) {
         Optional<Review> exist = reviewRepo.findBySeqAndUserId(seq,userid);
-        if(!exist.isPresent()){
+        if(!exist.isPresent() || !userid.equals("admin")){
             return false;
         }
         reviewRepo.deleteReviewBySeqAndUserId(seq,userid);
