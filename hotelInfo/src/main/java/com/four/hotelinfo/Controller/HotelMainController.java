@@ -44,7 +44,7 @@ public class HotelMainController {
             @RequestParam(required = false, defaultValue = "", value = "keyword2") String keyword2,
             @RequestParam(required = false, defaultValue = "1", value = "page") int page){
         Pageable pagealbe = PageRequest.of(page-1, 12, Sort.by(Sort.Direction.ASC, "hotelid"));
-        Page<HotelMain> hotels = service.findByName(pagealbe, "%"+keyword1+"%", "%"+keyword2+"%");
+        Page<HotelMain> hotels = service.findBytwoKeyword(pagealbe, "%"+keyword1+"%", "%"+keyword2+"%");
         return new ResponseEntity<>(hotels, HttpStatus.OK);
     }
 

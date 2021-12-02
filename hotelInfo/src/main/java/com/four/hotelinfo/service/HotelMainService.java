@@ -28,9 +28,16 @@ public class HotelMainService {
         return hotelMainRepo.findAll(pageable);
     }
     
+    //keyword1개로 hotelname or address 검색하는 메소드
     public Page<HotelMain> findByName(Pageable pageable, String Keyword1, String Keyword2) {
         hotelMainRepo.hotelSearchName(Keyword1, Keyword2, pageable.getOffset());
         return hotelMainRepo.findAllByHotelnameLikeOrAddressLike(Keyword1, Keyword2, pageable);
+    }
+    
+    //마지막에 추가된 검색 메소드
+    public Page<HotelMain> findBytwoKeyword(Pageable pageable, String Keyword1, String Keyword2) {
+        hotelMainRepo.hotelSearchName(Keyword1, Keyword2, pageable.getOffset());
+        return hotelMainRepo.find( Keyword1, Keyword2, pageable);
     }
 
     public HotelMain findHotel(Long hotel){

@@ -17,6 +17,9 @@ public interface HotelMainRepo extends JpaRepository<HotelMain, Long> {
 
     Page<HotelMain> findAllByHotelnameLikeOrAddressLike(String Keyword1, String Keyword2, Pageable pageable);
 
+    @Query(value="select * from hotel_main_tbl where (hotelname like :keyword1 or address like :keyword1) and address like :keyword2 order by hotelid", nativeQuery=true )
+    Page<HotelMain> find(@Param("keyword1") String keyword1, @Param("keyword2") String keyword2,Pageable pageable);
+    
     @Modifying
     @Transactional
     @Query(value="MERGE INTO hotel_main_tbl H\r\n" + 
