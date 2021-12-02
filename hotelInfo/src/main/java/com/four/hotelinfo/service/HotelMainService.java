@@ -28,11 +28,8 @@ public class HotelMainService {
         return hotelMainRepo.findAll(pageable);
     }
     
-    public Page<HotelMain> findByName(Pageable pageable, String Keyword) {
-        System.out.println(Keyword);
-        String Keyword1 = Keyword;
-        String Keyword2 = Keyword;
-        hotelMainRepo.hotelSearchName(Keyword,pageable.getOffset());
+    public Page<HotelMain> findByName(Pageable pageable, String Keyword1, String Keyword2) {
+        hotelMainRepo.hotelSearchName(Keyword1, Keyword2, pageable.getOffset());
         return hotelMainRepo.findAllByHotelnameLikeOrAddressLike(Keyword1, Keyword2, pageable);
     }
 

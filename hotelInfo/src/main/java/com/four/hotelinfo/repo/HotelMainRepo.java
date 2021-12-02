@@ -24,7 +24,7 @@ public interface HotelMainRepo extends JpaRepository<HotelMain, Long> {
     		"SELECT h.hotelid hotelid, nvl(round(avg(r.review_score),1),0) score\r\n" + 
     		"from HOTEL_MAIN_TBL h, review_tbl r, ( SELECT hotelid\r\n" + 
     		"FROM (SELECT ROWNUM r, h1.*\r\n" + 
-    		"FROM (select hotelid from hotel_main_tbl where hotelname like :keyword or address like :keyword order by hotelid) h1)\r\n" +
+    		"FROM (select hotelid from hotel_main_tbl where (hotelname like :keyword1 or address like :keyword1) and address like :keyword2 order by hotelid) h1)\r\n" +
     		"WHERE r between :cnt and :cnt + 12) h2\r\n" + 
     		"where  (h.hotelid = h2.hotelid) and (h.hotelid = r.hotelid(+))\r\n" + 
     		"group by h.hotelid\r\n" + 
@@ -32,7 +32,7 @@ public interface HotelMainRepo extends JpaRepository<HotelMain, Long> {
     		"ON (H.hotelid = S.hotelid)\r\n" + 
     		"WHEN MATCHED THEN\r\n" + 
     		"UPDATE SET H.SCORE = S.SCORE", nativeQuery=true)
-    void hotelSearchName(@Param("keyword") String keyword,@Param("cnt") Long cnt);
+    void hotelSearchName(@Param("keyword1") String keyword1, @Param("keyword2") String keyword2, @Param("cnt") Long cnt);
 
     @Modifying
     @Transactional
