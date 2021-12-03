@@ -35,7 +35,6 @@ public class UserController {
     }
 
     @PutMapping("/update") // 아직
-    @Query("")
     public ResponseEntity<?> updateUser(@RequestBody User user){
         boolean result = service.updateUser(user);
         if (result){

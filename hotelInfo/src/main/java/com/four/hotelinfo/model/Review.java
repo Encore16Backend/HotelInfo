@@ -20,6 +20,8 @@ public class Review implements Serializable {
 
     private Long hotelid;
 
+    private String hotelName;
+
     public Long getHotelid() {
         return hotelid;
     }
@@ -63,4 +65,11 @@ public class Review implements Serializable {
         this.reviewScore = reviewScore;
     }
 
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
+    }
 }
